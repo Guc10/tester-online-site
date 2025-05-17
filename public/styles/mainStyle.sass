@@ -1,0 +1,69 @@
+// Kolory i zmienne
+$primary: #4f8cff
+$secondary: #232946
+$accent: #eebbc3
+$background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)
+$text: #232946
+
+body
+  min-height: 100vh
+  margin: 0
+  font-family: 'Segoe UI', Arial, sans-serif
+  background: $background
+  color: $text
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: flex-start
+
+header
+  width: 100%
+  padding: 2rem 0
+  background: $primary
+  color: #fff
+  text-align: center
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07)
+
+h1
+  font-size: 2.5rem
+  margin: 0.5em 0
+
+h2, h3
+  color: $primary
+
+.container
+  background: #fff
+  border-radius: 1.2rem
+  box-shadow: 0 4px 24px rgba(79,140,255,0.08)
+  padding: 2rem
+  margin: 2rem 0
+  max-width: 600px
+  width: 90%
+
+button
+  background: $primary
+  color: #fff
+  border: none
+  border-radius: 0.5rem
+  padding: 0.75em 2em
+  font-size: 1.1rem
+  cursor: pointer
+  transition: background 0.2s
+  margin-top: 1em
+
+  &:hover
+    background: $accent
+    color: $secondary
+
+a
+  color: $primary
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+@media (max-width: 600px)
+  .container
+    padding: 1rem
+    max-width: 98%
+  h1
+    font-size: 1.5rem
