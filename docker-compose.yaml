@@ -1,0 +1,9 @@
+# docker-compose.yml
+version: '3'
+services:
+  nodeapp:
+    build: .
+    container_name: tester-online-site
+    restart: always
+    ports:
+      - "3000:3000"
