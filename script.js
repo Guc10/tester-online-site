@@ -3,7 +3,7 @@ async function getUsers() {
     const res = await fetch("/api/Users", {
       method: "GET",
       headers: {
-        "X-API-KEY": "sigmaSkibidiKfgdhdfgey",
+        "X-API-KEY": "sigmaSkibidiKey",
         Accept: "application/json",
       },
     });
