@@ -1,18 +1,18 @@
 async function getUsers() {
   try {
-    const res = await fetch('http://localhost:5167/api/Users', {
-      method: 'GET',
+    const res = await fetch("/api/Users", {
+      method: "GET",
       headers: {
-        'X-API-KEY': 'sigmaSkibidiKey',
-        'Accept': 'application/json'
-      }
+        "X-API-KEY": "sigmaSkibidiKfgdhdfgey",
+        Accept: "application/json",
+      },
     });
 
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     console.log(data);
   } catch (err) {
-    console.error('Błąd:', err);
+    console.error("Błąd:", err);
   }
 }
 
