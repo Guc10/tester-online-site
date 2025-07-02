@@ -1,0 +1,14 @@
+@use "./variables/variables" as *;
+
+form {
+  clear: both;
+  margin: 20px;
+  background-color: $containerColor;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+
+  input {
+    margin: 5px;
+  }
+}

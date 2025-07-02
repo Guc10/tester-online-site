@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Form from "./components/form.jsx";
-import { getAllUsers } from "./api.js";
+import { getAllUsers, deleteUser } from "./api.js";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -18,6 +18,11 @@ function App() {
     }
   }
 
+  async function removeUser(id) {
+    const res = await deleteUser(id);
+    fetchUsers();
+  }
+
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -29,7 +34,11 @@ function App() {
     <>
       <div>
         {users.map((user) => (
-          <div key={user.id}>
+          <div
+            key={user.id}
+            className="userContainer"
+            onClick={() => removeUser(user.id)}
+          >
             <p>Id: {user.id}</p>
             <p>Name: {user.name}</p>
             <p>Age: {user.age}</p>

@@ -1,0 +1,15 @@
+@use "./styles/userContainer";
+@use "./styles/form.scss";
+@use "./styles/variables/variables" as *;
+
+body {
+  margin: 0 auto;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Roboto";
+  color: $fontColor;
+}
+
+#root {
+  padding: 20px;
+}
