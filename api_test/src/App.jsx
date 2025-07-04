@@ -1,51 +1,43 @@
-import { useEffect, useState } from "react";
-import Form from "./components/form.jsx";
-import { getAllUsers, deleteUser } from "./api.js";
+import { useState } from "react";
+import { getAllUsers } from "./api";
+
+import Form from "./components/LogIn";
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  async function fetchUsers() {
-    try {
-      const res = await getAllUsers();
-      setUsers(res.data);
-    } catch (err) {
-      setError("Błąd pobierania użytkowników");
-    } finally {
-      setLoading(false);
+  const Status = {
+    LoggedIn: "loggedIn",
+    LogIn: "logIn",
+    NotFound: "notFound",
+    WrongCredentials: "wrongCredentials",
+  };
+
+  const [status, setStatus] = useState(Status.LogIn);
+
+  async function fetchUsersAndCheck(username, password) {
+    const res = await getAllUsers();
+    setUsers(res.data);
+
+    const user = res.data.find((user) => user.name === username);
+    if (user) {
+      if (user.password === password) {
+        setStatus(Status.LoggedIn);
+      } else {
+        setStatus(Status.NotFound);
+      }
+    } else {
+      setStatus(Status.WrongCredentials);
     }
   }
 
-  async function removeUser(id) {
-    const res = await deleteUser(id);
-    fetchUsers();
-  }
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
-
   return (
     <>
-      <div>
-        {users.map((user) => (
-          <div
-            key={user.id}
-            className="userContainer"
-            onClick={() => removeUser(user.id)}
-          >
-            <p>Id: {user.id}</p>
-            <p>Name: {user.name}</p>
-            <p>Age: {user.age}</p>
-          </div>
-        ))}
-      </div>
-      <Form onUserAdded={fetchUsers} />
+      {status === Status.LoggedIn ? (
+        <p>Logged successfully</p>
+      ) : (
+        <Form fetchUsersAndCheck={fetchUsersAndCheck}></Form>
+      )}
     </>
   );
 }

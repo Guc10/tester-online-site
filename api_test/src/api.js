@@ -17,12 +17,12 @@ export function getUser(id) {
   return api.get(`/${id}`);
 }
 
-export function createUser(name, age) {
-  return api.post(`/`, { name, age });
+export function createUser(name, password) {
+  return api.post(`/`, { name, password });
 }
 
-export function updateUser(id, name, age) {
-  return api.put(`/${id}`, { name, age });
+export function updateUser(id, name, password) {
+  return api.put(`/${id}`, { name, password });
 }
 
 export function deleteUser(id) {
