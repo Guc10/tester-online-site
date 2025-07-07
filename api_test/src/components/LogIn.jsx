@@ -12,6 +12,7 @@ function LogIn({ fetchUsersAndCheck }) {
           fetchUsersAndCheck(username, password);
         }}
       >
+        <p>Log In...</p>
         <input
           type="text"
           placeholder="username..."

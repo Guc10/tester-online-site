@@ -23,21 +23,26 @@ function App() {
     if (user) {
       if (user.password === password) {
         setStatus(Status.LoggedIn);
+        console.log("loggedIn");
       } else {
         setStatus(Status.NotFound);
+        console.log("notFound");
       }
     } else {
       setStatus(Status.WrongCredentials);
+      console.log("wrongCredentials");
     }
   }
 
   return (
     <>
-      {status === Status.LoggedIn ? (
-        <p>Logged successfully</p>
-      ) : (
-        <Form fetchUsersAndCheck={fetchUsersAndCheck}></Form>
-      )}
+      <main>
+        {status === Status.LoggedIn ? (
+          <p>Logged successfully</p>
+        ) : (
+          <Form fetchUsersAndCheck={fetchUsersAndCheck}></Form>
+        )}
+      </main>
     </>
   );
 }
